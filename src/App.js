@@ -7,11 +7,10 @@ import { Ping } from "./Action/PingPongAction";
 class App extends React.Component {
   handlePingClick = () => {
     this.props.PingAction("PING");
-    console.log(this.props.PingReducer);
   };
 
   render() {
-    // console.log(props);
+
     return (
       <div className="App">
         <header className="App-header">
