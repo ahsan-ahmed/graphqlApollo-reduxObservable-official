@@ -1,4 +1,3 @@
-
 export const PingReducer = (state = { isPinging: false }, action) => {
   switch (action.type) {
     case "PING":
@@ -11,5 +10,3 @@ export const PingReducer = (state = { isPinging: false }, action) => {
       return state;
   }
 };
-
-

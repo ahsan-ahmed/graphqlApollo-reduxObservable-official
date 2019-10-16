@@ -1,44 +1,29 @@
-import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
+import React from "react";
+import { CounterWithNameAndSideEffect } from "./components/FirstExample";
+// import SecondExample from "./components/SecondExample";
+import Dogs from "./components/DogDemoQuery";
+import DogPhoto from "./components/DogDemoPassArgQuery";
+import CurrencyRate from "./components/CurrencyRateQuery";
+import AddTodo from "./components/AddTodoMutation";
+import UpdateAllEntity from "./components/UpdateAllEntityMutation";
+import UpdateTodos from "./components/UpdateTodoMutation";
+
 import "./App.css";
-import { Ping } from "./Action/PingPongAction";
 
-function App(props) {
-  const [count, setCount] = useState(0);
-  const [value, setValue] = useState("initial");
-  
-  useEffect(() => {
-    document.title = `You clicked ${count} times`;
-  }, [count]);
-  const handlePingClick = () => {
-    props.PingAction("PING");
-  };
-  useEffect(() => {
-    console.log("render!");
-    return () => console.log("unmounting...");
-  });
-
-  useEffect(() => {
-    console.log(value);
-  }, [value]);
+export default function App() {
   return (
     <div className="App">
-      <h1>is pinging: {props.PingReducer.toString()}</h1>
-      <button onClick={handlePingClick}>Start PING</button>
-      <button
-        onClick={() => {
-          setCount(count + 1);
-        }}
-      >{`count increment ${count}`}</button>
+      <CounterWithNameAndSideEffect />
+      <AddTodo />
+      <UpdateAllEntity />
+      <UpdateTodos />
+      <DogPhoto />
+      <Dogs />
+      <CurrencyRate />
+      {/* *************************
+      for redux observable component
+      // <SecondExample />  
+      ************************** */}
     </div>
   );
 }
-
-const mapStateToProps = state => ({ PingReducer: state.isPinging });
-const mapDispatchToProps = dispatch => ({
-  PingAction: value => dispatch(Ping(value))
-});
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
