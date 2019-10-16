@@ -9,7 +9,7 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 
 const client = new ApolloClient({
-  uri: "https://48p1r2roz4.sse.codesandbox.io"
+  uri: "http://localhost:4003/todo"
 });
 /** for graphql Apollo */
 ReactDOM.render(

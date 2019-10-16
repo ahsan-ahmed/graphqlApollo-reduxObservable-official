@@ -13,7 +13,7 @@ const GET_DOGS = gql`
 
 export default function Dogs({ onDogSelected }) {
   const { loading, error, data } = useQuery(GET_DOGS);
-
+  console.log(data);
   if (loading) return "Loading...";
   if (error) return `Error! ${error.message}`;
 

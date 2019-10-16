@@ -5,44 +5,46 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 
-let users = {
-  1: {
+let dogs = [
+  {
     id: "1",
-    username: "Robin Wieruch"
+    breed: "Robin Wieruch"
   },
-  2: {
+  {
     id: "2",
-    username: "Dave Davids"
+    breed: "Dave Davids"
+  },
+  {
+    id: "3",
+    breed: "Dave Davids"
   }
-};
-const me = users[1];
+];
 
 const schema = gql`
-  type Query {
-    users: [User!]
-    me: User
-    user(id: ID!): User
+  type Dog {
+    id: ID
+    breed: String!
   }
-  type User {
-    id: ID!
-    username: String!
+  type Query {
+    dogs: [Dog]
   }
 `;
 const resolvers = {
   Query: {
-    me: () => {
-      return me;
-    },
-    user: (parent, { id }) => {
-      return users[id];
-    }
+    dogs: () => dogs
+    // me: () => {
+    //   return me;
+    // },
+    // user: (parent, { id }) => {
+    //   return users[id];
+    // }
   }
 };
 const server = new ApolloServer({
   typeDefs: schema,
   resolvers
 });
-server.applyMiddleware({ app, path: "/graphql" });
-app.listen({ port: 8000 }, () => {
-  console.log("Apollo Server on http://localhost:8000/graphql");
+server.applyMiddleware({ app, path: "/todo" });
+app.listen({ port: 4003 }, () => {
+  console.log("Apollo Server on http://localhost:4003/todo");
 });

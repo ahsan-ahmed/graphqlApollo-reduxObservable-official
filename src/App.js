@@ -13,13 +13,13 @@ import "./App.css";
 export default function App() {
   return (
     <div className="App">
-      <CounterWithNameAndSideEffect />
+      {/* <CounterWithNameAndSideEffect />
       <AddTodo />
       <UpdateAllEntity />
       <UpdateTodos />
-      <DogPhoto />
+      <DogPhoto /> */}
       <Dogs />
-      <CurrencyRate />
+      {/* <CurrencyRate /> */}
       {/* *************************
       for redux observable component
       // <SecondExample />  
